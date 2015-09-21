@@ -1,0 +1,9 @@
+TAGS
+*.vtk
+*.txt
+*.dat
+.dropbox.attr
+run
+tmp/
+
+!ref/*.txt
