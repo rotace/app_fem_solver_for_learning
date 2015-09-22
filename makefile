@@ -11,7 +11,7 @@ graph	:
 	\rm -rf *.txt
 	\octave analysis.m
 
-# caution % => # you sould fix format %d %e %f yourself
+# caution % -> # : you sould fix %d %e %f by yourself.
 # utf8-unix	:
 # 	\find . -name "*.m" -exec nkf --overwrite -Lu -w {} \;
 # 	\find . -name "*.m" -exec sed -i -e "s/%/#/g" {} \;
@@ -25,6 +25,7 @@ clean	:
 	\rm -rf *.txt
 	\rm -rf *.dat
 	\rm -rf run
+	\rm -rf paraview_python/*.png
 
 view	:
 	\paraview &
