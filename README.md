@@ -16,12 +16,14 @@ inputPureAcousFemTest(itr,id);    % 音響問題（周波数領域計算）
 ###### sample_truss2D  
 二次元２自由度トラス問題です．トラス構造の２次元図が描画されたのち，
 各部材の応力などの結果が標準出力されます．
+周波数ループに対応していません，itr.start とitr.stop を同じ値にしてください．
 ###### sample_bar1D  
 １次元１自由度(変位d)梁問題です．変位と応力の分布を標準出力＆描画します．
+周波数ループに対応していません，itr.start とitr.stop を同じ値にしてください．
 ###### inputPureAcousFemTest  
 ３次元１自由度(圧力p)音響問題です．圧力分布などをvtk形式で出力します．
-アセンブリの実装が一般的なので，FEMの勉強に最も最適です．
-周波数ループに対応しているので
+アセンブリの実装が一般的です．
+周波数ループに対応しているので，itr.start，itr.stop，itr.df を設定してください．
 
 ### コメントアウトについて
 デフォルトではoctave用になっています．  
@@ -47,6 +49,18 @@ utf8-LF -> sjis-CRLFへ変換することで，windows用になります．
 # utf8-LF -> sjis-CRLF変換例 (nkf要インストール)
 find . -name "*.m" -exec nkf --overwrite -Lw -s {} \;
 ```
+
+### paraview pythonについて
+音響問題ソルバーは後処理でVTKファイルを出力します．
+VTKファイルは周波数連番となっており，paraview_python/view.py 
+バッチファイルで圧力分布の全周波数可視化が自動実行可能です．
+paraview を起動したのち，[tools]-[python shell]を選択し，
+Python Shell を起動してください．
+[Run Script]からview.py バッチファイルを選択すると自動実行が始まります．
+
+バッチファイルをカスタマイズしたい場合は，[tools]-[Start/Stop Trace]を活用してください．
+GUI操作をPythonスクリプトとして出力します．  
+[参考：Paraviewによる可視化中級編(pdf)](http://www.opencae.jp/attachment/wiki/%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3CAE%E3%82%B7%E3%83%B3%E3%83%9D%E3%82%B8%E3%82%A6%E3%83%A02011/course20111201handout.pdf)
 
 ### log
 * マルチドメイン連成計算からシングルドメイン計算のみに変更
